@@ -32,7 +32,11 @@ namespace smol {
 
         ~logger_reader();
 
-        void bind_sink(std::string _key, std::ostream* _sink);
+        void bind_sink(std::string _name, std::ostream* _sink);
+
+        void unbind_sing(std::string const& _name);
+
+        bool contains(std::string const& _name) const;
 
         void run();
 
