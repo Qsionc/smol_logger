@@ -6,7 +6,7 @@
  *  @Copyright: This software is free to use and distribute free of charge.
  */
 
-#include "implementation/jthread.h"
+#include "core/jthread.h"
 
 using namespace smol;
 

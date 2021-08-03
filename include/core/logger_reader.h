@@ -11,7 +11,6 @@
 
 #include <unordered_map>
 #include <mutex>
-#include <singleton.h>
 #include "jthread.h"
 #include "basic_sink.h"
 #include "logger_queue.h"
@@ -22,10 +21,9 @@ namespace smol {
         std::atomic_bool terminate_flag;
         jthread jthread_;
         std::mutex mutex;
-        singleton<logger_queue> queue_;
         std::unordered_map<std::string, std::unique_ptr<basic_sink>> sink_list_;
 
-        void reader_thread();
+        void reader_thread(logger_queue& _queue);
 
     public:
         logger_reader();
@@ -34,11 +32,11 @@ namespace smol {
 
         void bind_sink(std::string _name, std::ostream* _sink);
 
-        void unbind_sing(std::string const& _name);
+        void unbind_sink(std::string const& _name);
 
         bool contains(std::string const& _name) const;
 
-        void run();
+        void run(logger_queue& _queue);
 
         void terminate();
     };

@@ -1,7 +1,4 @@
-if (UNIT_TEST)
-    find_package(GTest REQUIRED)
-endif ()
-
-find_package(singleton REQUIRED)
-find_package(smormat REQUIRED)
-find_package(Threads REQUIRED)
+include(CMakeFindDependencyMacro)
+find_dependency(singleton REQUIRED)
+find_dependency(smormat REQUIRED)
+find_dependency(Threads REQUIRED)

@@ -7,7 +7,7 @@
  */
 
 
-#include "implementation/basic_sink.h"
+#include "core/basic_sink.h"
 
 smol::basic_sink::basic_sink(std::ostream* _ptr) :
         ostream_(_ptr) {

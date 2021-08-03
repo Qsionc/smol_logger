@@ -3,10 +3,10 @@
  *  @date:      02/08/2021
  *  @file:      logger_queue.cpp
  *  @brief:     
- *  @Copyright: This software is free to use and distribute free of charge.
+ *  @Copyright: This software is free to use and distribute.
  */
 
-#include "implementation/logger_queue.h"
+#include "core/logger_queue.h"
 
 using namespace smol;
 

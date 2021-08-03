@@ -6,7 +6,9 @@
  *  @Copyright: This software is free to use and distribute free of charge.
  */
 
-#ifndef SMOL_LOGGER_LOGGER_H
-#define SMOL_LOGGER_LOGGER_H
+#ifndef SMOL_LOGGER_SMOGGER_H
+#define SMOL_LOGGER_SMOGGER_H
 
-#endif //SMOL_LOGGER_LOGGER_H
+#include "core/logger.h"
+
+#endif //SMOL_LOGGER_SMOGGER_H

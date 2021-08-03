@@ -1,8 +1,10 @@
 #include <iostream>
 #include <gtest/gtest.h>
-#include <implementation/jthread.h>
-#include <implementation/logger_queue.h>
-#include <implementation/logger_reader.h>
+#include <singleton.h>
+#include <core/jthread.h>
+#include <core/logger_queue.h>
+#include <core/logger_reader.h>
+#include "smogger.h"
 
 class TestSmoggerLibraryFixture : public ::testing::Test {
 public:
@@ -53,13 +55,31 @@ TEST_F(TestSmoggerLibraryFixture, test_logger_reader) {
 
     queue.init();
     reader.init();
-    reader->run();
+    reader->run(*queue);
 
     reader->bind_sink("ss", &ss);
     queue->put_message(test_message);
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
     ASSERT_EQ(ss.str(), test_message);
     reader->terminate();
+    queue.destroy();
+    reader.destroy();
+}
+
+
+TEST_F(TestSmoggerLibraryFixture, test_complete_logger) {
+    smol::singleton<smol::logger> logger;
+    std::stringstream ss;
+    std::string test_message = "Test Message {1} {0}";
+    std::string formatted = "Test Message 42 string";
+    logger.init();
+    logger->bind_sink("ss", ss);
+    smol::jthread jthread([](smol::singleton<smol::logger> logger, std::string const& _string) {
+        logger->raw(_string, "string", 42);
+    }, logger, test_message);
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    ASSERT_EQ(ss.str(), formatted);
+    logger.destroy();
 }
 
 int main(int _argc, char** _argv) {
