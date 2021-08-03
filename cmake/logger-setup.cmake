@@ -21,7 +21,8 @@ target_link_libraries(smogger PUBLIC
 
 install(TARGETS smogger
         EXPORT smoggerTargets
-        ARCHIVE DESTINATION ${LOGGER_ARCHIVE_INSTALL_REL_PATH_DIR}
+        ARCHIVE DESTINATION
+        ${LOGGER_ARCHIVE_INSTALL_REL_PATH_DIR}
         INCLUDES DESTINATION ${LOGGER_INCLUDE_INSTALL_REL_PATH_DIR})
 install(EXPORT smoggerTargets
         FILE smoggerTargets.cmake
