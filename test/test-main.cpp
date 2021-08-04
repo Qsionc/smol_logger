@@ -69,14 +69,15 @@ TEST_F(TestSmoggerLibraryFixture, test_logger_reader) {
 
 TEST_F(TestSmoggerLibraryFixture, test_complete_logger) {
     smol::singleton<smol::logger> logger;
+    logger.init();
     std::stringstream ss;
     std::string test_message = "Test Message {1} {0}";
     std::string formatted = "Test Message 42 string";
-    logger.init();
     logger->bind_sink("ss", ss);
-    smol::jthread jthread([](smol::singleton<smol::logger> logger, std::string const& _string) {
+    smol::jthread jthread([](std::string const& _string) {
+        smol::singleton<smol::logger> logger;
         logger->raw(_string, "string", 42);
-    }, logger, test_message);
+    }, test_message);
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
     ASSERT_EQ(ss.str(), formatted);
     logger.destroy();

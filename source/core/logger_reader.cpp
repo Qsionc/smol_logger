@@ -27,7 +27,7 @@ logger_reader::logger_reader() : terminate_flag(true) {
 }
 
 logger_reader::~logger_reader() {
-    terminate_flag = true;
+    terminate();
 }
 
 void logger_reader::bind_sink(std::string _name, std::ostream* _sink) {
