@@ -14,7 +14,7 @@ add_library( smogger STATIC
              ${SOURCE_DIR}/core/logger.cpp )
 target_include_directories( smogger PUBLIC
                             $<BUILD_INTERFACE:${INCLUDE_DIR}>
-                            $<INSTALL_INTERFACE:include> )
+                            $<INSTALL_INTERFACE:${LOGGER_INCLUDE_INSTALL_REL_PATH_DIR}> )
 target_link_libraries( smogger PUBLIC
                        Threads::Threads
                        singleton::singleton

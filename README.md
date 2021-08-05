@@ -95,7 +95,7 @@ All it takes now is to use it:
 
 ```c++
 #include <iostream>
-#include <smogger/smogger.h>
+#include <smogger.h>
 
 using Logger = smol::singleton<smol::logger>;
 
