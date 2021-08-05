@@ -63,7 +63,7 @@ namespace smol
         /**
          * @brief Push INFO message to logger
          * @tparam Args variadic template parameters
-         * @param _format format string, refer to smol::Format for example usage
+         * @param _format format string, refer to smol::format for example usage
          * @param _args argument pack
          */
         template<class ... Args>
@@ -75,7 +75,7 @@ namespace smol
         /**
          * @brief Push ERROR message to logger
          * @tparam Args variadic template parameters
-         * @param _format format string, refer to smol::Format for example usage
+         * @param _format format string, refer to smol::format for example usage
          * @param _args argument pack
          */
         template<class ... Args>
@@ -87,7 +87,7 @@ namespace smol
         /**
          * @brief Push FATAL message to logger
          * @tparam Args variadic template parameters
-         * @param _format format string, refer to smol::Format for example usage
+         * @param _format format string, refer to smol::format for example usage
          * @param _args argument pack
          */
         template<class ... Args>
@@ -99,7 +99,7 @@ namespace smol
         /**
          * @brief Push WARNING message to logger
          * @tparam Args variadic template parameters
-         * @param _format format string, refer to smol::Format for example usage
+         * @param _format format string, refer to smol::format for example usage
          * @param _args argument pack
          */
         template<class ... Args>
@@ -111,7 +111,7 @@ namespace smol
         /**
          * @brief Push RAW message to logger (no prefix)
          * @tparam Args variadic template parameters
-         * @param _format format string, refer to smol::Format for example usage
+         * @param _format format string, refer to smol::format for example usage
          * @param _args argument pack
          */
         template<class ... Args>
