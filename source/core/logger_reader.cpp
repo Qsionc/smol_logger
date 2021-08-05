@@ -11,7 +11,7 @@
 using namespace smol;
 
 void logger_reader::reader_thread(logger_queue& _queue) {
-    while (!terminate_flag) {
+    while (!terminate_flag_) {
         auto result = _queue.get_next();
         if (!result) {
             continue;
@@ -23,7 +23,7 @@ void logger_reader::reader_thread(logger_queue& _queue) {
     }
 }
 
-logger_reader::logger_reader() : terminate_flag(true) {
+logger_reader::logger_reader() : terminate_flag_(true) {
 }
 
 logger_reader::~logger_reader() {
@@ -36,15 +36,15 @@ void logger_reader::bind_sink(std::string _name, std::ostream* _sink) {
 }
 
 void logger_reader::run(logger_queue& _queue) {
-    if (terminate_flag) {
-        terminate_flag = false;
+    if (terminate_flag_) {
+        terminate_flag_ = false;
         std::lock_guard lockGuard(mutex);
         jthread_ = smol::jthread(&logger_reader::reader_thread, this, std::ref(_queue));
     }
 }
 
 void logger_reader::terminate() {
-    terminate_flag = true;
+    terminate_flag_ = true;
     if (jthread_.joinable()) {
         jthread_.join();
     }

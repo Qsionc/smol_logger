@@ -2,14 +2,15 @@
  *  @author:    Qsionc
  *  @date:      03/08/2021
  *  @file:      logger_settings.h
- *  @brief:     
+ *  @brief:     Global logger settings file, any global information wil lbe stored here
  *  @Copyright: This software is free to use and distribute free of charge.
  */
 
 #ifndef SMOL_LOGGER_LOGGER_SETTINGS_H
 #define SMOL_LOGGER_LOGGER_SETTINGS_H
 
-namespace smol::settings {
+namespace smol::settings
+{
     constexpr char info_prefix[] = "[INFO]\t";
     constexpr char warning_prefix[] = "[WARNING]\t";
     constexpr char error_prefix[] = "[ERROR] \t";

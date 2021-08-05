@@ -2,7 +2,7 @@
  *  @author:    Qsionc
  *  @date:      02/08/2021
  *  @file:      logger.h
- *  @brief:     
+ *  @brief:     Default header, include this to your project
  *  @Copyright: This software is free to use and distribute free of charge.
  */
 
