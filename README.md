@@ -14,6 +14,7 @@ sinks.
 5. [Installation](#installation)
 6. [Example usage](#example-usage)
 7. [Conclusion](#conclusion)
+8. [Changelist](#changelist)
 
 ## Supported Platforms
 
@@ -124,3 +125,11 @@ Output:
 is made to practice C++/CMake and learn OpenGL/Vulkan.
 
 I do not claim to be good programmer, so any insight and constructive criticism is appreciated!
+
+***
+
+## Changelist
+
+|Date|Files Changed|Author|Detailed Information|
+|----|-------------|------|--------------------|
+|06-08-2021|logger_reader.h, logger.cpp, logger_reader.cpp|Qsionc|Fixed issue regarding logger not clearing message queue upon destruction|

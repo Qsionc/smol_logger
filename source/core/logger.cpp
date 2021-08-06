@@ -9,15 +9,16 @@
 #include "core/logger.h"
 
 smol::logger::logger() {
-    queue_.init();
     reader_.init();
+    queue_.init();
     reader_->run(*queue_);
 }
 
 smol::logger::~logger() {
     reader_->terminate();
-    reader_.destroy();
+    reader_->clear_queue(*queue_);
     queue_.destroy();
+    reader_.destroy();
 }
 
 void smol::logger::bind_sink(std::string _name, std::ostream& _os) {

@@ -25,6 +25,8 @@ namespace smol
     class logger_reader
     {
     private:
+        friend class logger;
+
         /**
          * @brief Flag that signals termination of reader_thread
          */
@@ -47,6 +49,8 @@ namespace smol
          * @param _queue reference to target queue to be read from
          */
         void reader_thread(logger_queue& _queue);
+
+        void clear_queue(logger_queue& _queue);
 
     public:
         /**

@@ -16,7 +16,20 @@ void logger_reader::reader_thread(logger_queue& _queue) {
         if (!result) {
             continue;
         }
-        std::unique_lock lock(mutex);
+        std::lock_guard lock(mutex);
+        for (auto& it : sink_list_) {
+            (*it.second) << (*result);
+        }
+    }
+}
+
+
+void logger_reader::clear_queue(logger_queue& _queue)
+{
+    while(!_queue.empty())
+    {
+        auto result = _queue.get_next();
+        std::lock_guard lock(mutex);
         for (auto& it : sink_list_) {
             (*it.second) << (*result);
         }
@@ -59,3 +72,4 @@ void logger_reader::unbind_sink(std::string const& _name) {
 bool logger_reader::contains(const std::string& _name) const {
     return sink_list_.contains(_name);
 }
+
