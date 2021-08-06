@@ -112,7 +112,10 @@ int main() {
     return 0;
 }
 ```
-
+Output:
+```shell
+[INFO] some important data: 42
+```
 ---
 
 # Conclusion
